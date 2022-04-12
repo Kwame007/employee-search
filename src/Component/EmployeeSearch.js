@@ -3,7 +3,6 @@ import { Form, Row, Col, Button } from "react-bootstrap";
 
 const EmployeeSearch = ({ onSubmit }) => {
   const [searchTerm, setSearchTerm] = useState("");
-  // console.log(props);
 
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
