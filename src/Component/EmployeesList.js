@@ -5,11 +5,13 @@ import Loading from "./Loading";
 
 const NotFound = () => {
   return (
-    <Card>
+    <Card className="w-50 text-center mx-auto mt-5 py-5">
       {" "}
       <Card.Body>
         {" "}
-        <Card.Title>Sorry No User Found!</Card.Title>{" "}
+        <Card.Title>
+          <h3>Sorry No User Found!</h3>
+        </Card.Title>{" "}
       </Card.Body>{" "}
     </Card>
   );
@@ -17,26 +19,30 @@ const NotFound = () => {
 
 const EmployeesList = ({ doc, isLoading }) => {
   return (
-    <Card style={{ width: "100%" }} className="mt-5 p-0">
+    <>
       <Loading isLoading={isLoading} />
-      <ListGroup variant="flush">
-        {!isLoading &&
-          doc.map((employee) => {
-            return (
-              <Link
-                to={`/profile/${employee.id}`}
-                key={employee.id}
-                style={{ textDecoration: "none" }}
-              >
-                <ListGroup.Item className="py-4">
-                  {employee.value.fullname}
-                </ListGroup.Item>
-              </Link>
-            );
-          })}
-        {doc.length === 0 && !isLoading && <NotFound />}
-      </ListGroup>
-    </Card>
+      {!isLoading && (
+        <Card style={{ width: "100%" }} className="mt-5 p-0">
+          <ListGroup variant="flush">
+            {!isLoading &&
+              doc.map((employee) => {
+                return (
+                  <Link
+                    to={`/profile/${employee.id}`}
+                    key={employee.id}
+                    style={{ textDecoration: "none" }}
+                  >
+                    <ListGroup.Item className="py-4">
+                      {employee.value.fullname}
+                    </ListGroup.Item>
+                  </Link>
+                );
+              })}
+          </ListGroup>
+        </Card>
+      )}
+      {doc.length === 0 && !isLoading && <NotFound />}
+    </>
   );
 };
 export default EmployeesList;
