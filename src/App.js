@@ -1,29 +1,14 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Employee from "./Component/Employees";
-import Info from "./Component/UI/Info";
-import EmployeeProfile from "./Component/EmployeeProfile";
-import { Container, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
+import { Container } from "react-bootstrap";
+import Layout from "./Routes/routes";
 
 function App() {
   return (
     <Router>
       <React.Fragment>
         <Container>
-          <Link to="/">Home</Link>
-
-          <Row>
-            <Switch>
-              <Route exact path="/">
-                <Info />
-                <Employee />
-              </Route>
-              <Route path="/profile/:id">
-                <EmployeeProfile />
-              </Route>
-            </Switch>
-          </Row>
+          <Layout />
         </Container>
       </React.Fragment>
     </Router>
