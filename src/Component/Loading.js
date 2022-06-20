@@ -5,7 +5,12 @@ const Loading = (props) => {
   return (
     <>
       {props.isLoading && (
-        <Button variant="primary" className="w-25 m-auto" size="sm" disabled>
+        <Button
+          variant="primary"
+          className="w-25 mx-auto mt-5"
+          size="sm"
+          disabled
+        >
           <Spinner
             as="span"
             animation="grow"
