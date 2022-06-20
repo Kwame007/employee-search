@@ -9,6 +9,7 @@ const EmployeeProfile = (props) => {
   const { id } = useParams();
 
   let { document, isLoading } = useFetchEmployeeProfile(id);
+  console.log(document);
 
   return (
     <>
