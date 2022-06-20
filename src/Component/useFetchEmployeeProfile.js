@@ -1,30 +1,12 @@
 import { useState, useEffect } from "react";
-import { initializeApp } from "firebase/app";
 import { collection, getDocs } from "firebase/firestore";
-import { getFirestore } from "firebase/firestore";
+import { db } from "../firebase/firestore";
 
-// firebase
-const firebaseConfig = {
-  apiKey: process.env.REACT_APP_apiKey,
-  authDomain: process.env.REACT_APP_authDomain,
-  projectId: process.env.REACT_APP_projectId,
-  storageBucket: process.env.REACT_APP_storageBucket,
-  messagingSenderId: process.env.REACT_APP_messagingSenderId,
-  appId: process.env.REACT_APP_appId,
-  measurementId: process.env.REACT_APP_measurementId,
-};
 const useFetchEmployeeProfile = (searchQuery) => {
   const [document, setDocument] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   // const [error, setError] = useState(null);
 
-  // [initialize firebase]
-  const app = initializeApp(firebaseConfig);
-
-  // Initialize Cloud Firestore and get a reference to the service
-  const db = getFirestore(app);
-
-  // handles side effect in our code
   useEffect(() => {
     (async () => {
       try {
@@ -50,10 +32,10 @@ const useFetchEmployeeProfile = (searchQuery) => {
       }
     })();
     return () => {
-      console.log("clean up functiom");
+      console.log("clean up functiom which runs upon component re-render");
       return;
     };
-  }, [db, searchQuery, document]);
+  }, [searchQuery]);
 
   return { document, isLoading };
 };
