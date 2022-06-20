@@ -5,8 +5,8 @@ import { db } from "../firebase/firestore";
 const useFetchEmployeeProfile = (searchQuery) => {
   const [document, setDocument] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  // const [error, setError] = useState(null);
 
+  
   useEffect(() => {
     (async () => {
       try {
