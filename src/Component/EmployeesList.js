@@ -3,6 +3,18 @@ import { Card, ListGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Loading from "./Loading";
 
+const NotFound = () => {
+  return (
+    <Card>
+      {" "}
+      <Card.Body>
+        {" "}
+        <Card.Title>Sorry No User Found!</Card.Title>{" "}
+      </Card.Body>{" "}
+    </Card>
+  );
+};
+
 const EmployeesList = ({ doc, isLoading }) => {
   return (
     <Card style={{ width: "100%" }} className="mt-5 p-0">
@@ -22,6 +34,7 @@ const EmployeesList = ({ doc, isLoading }) => {
               </Link>
             );
           })}
+        {doc.length === 0 && !isLoading && <NotFound />}
       </ListGroup>
     </Card>
   );
